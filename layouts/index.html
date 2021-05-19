@@ -12,56 +12,127 @@
 </section>
 {{ end }}
 
-{{ define "sidebar-prefooter" }}
-
-<section class="section section-sm">
-  <div class="container">
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-5">
-        <h2 class="h4">Human-Centric Infrastructure 😍</h2>
-        <p>
-Successful data science projects are delivered by data scientists who can build, improve, and operate end-to-end workflows independently, focusing more on data science, less on engineering.
-        </p>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Build with Metaflow 💻</h2>
-        <p>
-Metaflow helps you design your workflow, run it at scale, and deploy it to production. It versions and tracks all your experiments and data automatically. It allows you to inspect results easily in notebooks.
-        </p>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Use your favorite tools 🐍</h2>
-        <p>
-Use Metaflow with your favorite data science libraries, such as Tensorflow or SciKit Learn, and write your models in idiomatic Python code with not much new to learn. Metaflow also supports the R language.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-{{ end }}
-
 
 {{ define "sidebar-footer" }}
 
 <section class="section section-sm mt-4 pt-4">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-12 col-lg-10">
-        <h2 class="h3 mt-3 text-center">Welcome 👋 How can we help you?</h2>
+      <div class="col-md-10 col-lg-8">
+        <h2 class="h3 mt-3 text-center">Human-Centric Infrastructure 😍</h2>
         <p>
-        We are a friendly community of data scientists and engineers, working on various industries from biotech to real estate.
-        We are joined by the desire to deliver actually useful ML/AI/data science applications rapidly with minimal frustration.
+Successful data science projects are delivered by data scientists who can experiment quickly and deliver production systems independently, from raw data to models and from models to business results.
+      </p>
+      <p>
+        This requires a full stack of infrastructure. Metaflow helps you set up the stack, so data scientists can focus more on data science, less
+on engineering.
         </p>
-        <p>We hope that Metaflow and other resources you'll find here are equally useful to new data scientists who are just learning
-          Python as well as seasoned infrastructure engineers. Look around, and most importantly, feel free to ask questions!
+        <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div style="height: 600px; background-color: #282a36; border-radius: 15px; justify-content:left; padding-left: 70px; display: flex;">
+                <pre>
+                  <code class="language-python">
+from metaflow import FlowSpec
+
+class HelloFlow(FlowSpec):
+
+    @step
+    def start(self):
+        print("hello world!")
+        self.next(self.end)
+
+    @step
+    def end(self):
+        print("done!")
+
+HelloFlow()
+                  </code>
+                </pre>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Simple things should be simple</h5>
+                <p>Metaflow makes it easy to define and execute workflows.</p>
+              </div>
+          </div>
+          <div class="carousel-item">
+             <div style="height: 600px; background-color: #282a36; border-radius: 15px; justify-content:left; padding-left: 70px; display: flex;">
+                <pre>
+                  <code class="language-python">
+
+    @step
+    def train_model(self):
+        from xgboost import XGBClassifier
+        model = XGBClassifier()
+        model.fit(self.X_train, self.y_train)
+
+                  </code>
+                </pre>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Works with your favorite ML libraries</h5>
+                <p>There's not much new to learn.</p>
+              </div>
+          </div>
+          <div class="carousel-item">
+             <div style="height: 600px; background-color: #282a36; border-radius: 15px; justify-content:left; padding-left: 70px; display: flex;">
+                <pre>
+                  <code class="language-python">
+
+    #Request 64 CPU cores and 256GB of memory
+    @batch(cpu=64, memory=256000)
+    @step
+    def train_model(self):
+        from xgboost import XGBClassifier
+        model = XGBClassifier()
+        model.fit(self.X_train, self.y_train)
+
+                  </code>
+                </pre>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Scale up and out to the cloud</h5>
+                <p>Handle terabytes of data in a workflow</p>
+              </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sm mt-4 pt-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <h2 class="h3 mt-3 text-center">Welcome! 👋</h2>
+        <p>
+        Metaflow was started at Netflix where it powers tens of business-critical data science
+        systems. Outerbounds was founded to continue the development of Metaflow
+        outside Netflix, in collaboration with various companies from biotech to real estate.
+        </p>
+        <p>
+        We welcome you to look around, start using Metaflow, ask questions, and contribute.
+        We are excited to have you!
         </p>
         <ul class="" style="font-size: 120%">
-          <li>Hmm, interesting. I want to learn more 🤔 Take a look at <b><a href="#">Docs</a></b>.</li>
+          <li>I want to learn more 🤔 Take a look at <b><a href="#">Docs</a></b>.</li>
           <li>What's new since my last visit? ✨ See <b><a href="#">Daily Updates</a></b>.</li>
-          <li>I have a question or comment ❤️ Open a thread on <b><a href="#">Discussions</a></b> (or <a href="#">chat</a>).</li>
           <li>I think I found a bug 🙏 Open an <b><a href="#">Issue</a></b> (or <a href="#">chat</a>).</li>
-          <li>I want to chat with y'all 🤗 See you on <b><a href="#">Slack</a>!</b></li>
+          <li>I have a question or feedback 🤗 See you on <b><a href="#">Slack</a>!</b></li>
         </ul>
       </div>
     </div>
